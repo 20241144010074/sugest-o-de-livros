@@ -28,22 +28,41 @@
 
         <button type="submit">Cadastrar livro</button>
     </form>
+
     <hr>
 
-<h2>Livros cadastrados</h2>
+    <h2>Livros cadastrados</h2>
 
-{% if livros %}
-    {% for livro in livros %}
-        <div>
-            <h3>{{ livro.titulo }}</h3>
-            <p><strong>Autor:</strong> {{ livro.autor }}</p>
-            <p><strong>Gênero:</strong> {{ livro.genero }}</p>
-            <p><strong>Descrição:</strong> {{ livro.descricao }}</p>
-        </div>
-        <hr>
-    {% endfor %}
-{% else %}
-    <p>Nenhum livro cadastrado ainda.</p>
-{% endif %}
+    {% if livros %}
+        {% for livro in livros %}
+            <div>
+                <h3>{{ livro.titulo }}</h3>
+
+                <p>
+                    <strong>Autor:</strong>
+                    {{ livro.autor }}
+                </p>
+
+                <p>
+                    <strong>Gênero:</strong>
+                    {{ livro.genero }}
+                </p>
+
+                <p>
+                    <strong>Descrição:</strong>
+                    {{ livro.descricao }}
+                </p>
+
+                <a href="{{ url_for('main.editar_livro', id=livro.id) }}">
+                    Editar
+                </a>
+            </div>
+
+            <hr>
+        {% endfor %}
+    {% else %}
+        <p>Nenhum livro cadastrado ainda.</p>
+    {% endif %}
+
 </body>
 </html>
