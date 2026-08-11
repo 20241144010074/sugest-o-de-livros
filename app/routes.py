@@ -1,6 +1,7 @@
 from flask import Blueprint, render_template, request, redirect, url_for
 from . import db
 from .models import Livro
+from .ai import gerar_sugestoes
 
 bp = Blueprint("main", __name__)
 
@@ -59,8 +60,7 @@ def sugestao():
 
     if request.method == "POST":
         pedido = request.form["pedido"]
-
-        sugestoes = f"Você pediu sugestões para: {pedido}"
+        sugestoes = gerar_sugestoes(pedido)
 
     return render_template(
         "sugestao.html",

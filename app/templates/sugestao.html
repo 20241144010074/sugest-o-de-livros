@@ -30,6 +30,18 @@
 
     </form>
 
+    {% if sugestoes %}
+
+        <hr>
+
+        <h2>📚 Sugestões da IA</h2>
+
+        <div>
+            {{ sugestoes }}
+        </div>
+
+    {% endif %}
+
     <br>
 
     <a href="{{ url_for('main.index') }}">
