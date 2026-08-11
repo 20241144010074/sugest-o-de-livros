@@ -51,3 +51,18 @@ def excluir_livro(id):
     db.session.commit()
 
     return redirect(url_for("main.index"))
+
+
+@bp.route("/sugestao", methods=["GET", "POST"])
+def sugestao():
+    sugestoes = None
+
+    if request.method == "POST":
+        pedido = request.form["pedido"]
+
+        sugestoes = f"Você pediu sugestões para: {pedido}"
+
+    return render_template(
+        "sugestao.html",
+        sugestoes=sugestoes
+    )

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Sugestão de Livros</title>
+</head>
+<body>
+
+    <h1>🤖 Sugestão de Livros</h1>
+
+    <p>
+        Descreva o tipo de livro que você gostaria de ler:
+    </p>
+
+    <form method="POST">
+
+        <textarea
+            name="pedido"
+            rows="5"
+            cols="50"
+            placeholder="Ex: Quero um livro de fantasia com aventura e magia..."
+            required
+        ></textarea>
+
+        <br><br>
+
+        <button type="submit">
+            Gerar sugestões
+        </button>
+
+    </form>
+
+    <br>
+
+    <a href="{{ url_for('main.index') }}">
+        Voltar para os livros
+    </a>
+
+</body>
+</html>
