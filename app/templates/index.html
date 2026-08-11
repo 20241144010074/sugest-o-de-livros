@@ -5,11 +5,13 @@
     <title>Sugestão de Livros</title>
 </head>
 <body>
+
     <h1>Sistema de Sugestão de Livros</h1>
 
     <h2>Cadastrar livro</h2>
 
     <form method="POST" action="/livros">
+
         <label>Título:</label>
         <input type="text" name="titulo" required>
         <br><br>
@@ -27,6 +29,7 @@
         <br><br>
 
         <button type="submit">Cadastrar livro</button>
+
     </form>
 
     <hr>
@@ -34,7 +37,9 @@
     <h2>Livros cadastrados</h2>
 
     {% if livros %}
+
         {% for livro in livros %}
+
             <div>
                 <h3>{{ livro.titulo }}</h3>
 
@@ -56,12 +61,25 @@
                 <a href="{{ url_for('main.editar_livro', id=livro.id) }}">
                     Editar
                 </a>
+
+                <form
+                    method="POST"
+                    action="{{ url_for('main.excluir_livro', id=livro.id) }}"
+                    style="display:inline;"
+                >
+                    <button type="submit">Excluir</button>
+                </form>
+
             </div>
 
             <hr>
+
         {% endfor %}
+
     {% else %}
+
         <p>Nenhum livro cadastrado ainda.</p>
+
     {% endif %}
 
 </body>

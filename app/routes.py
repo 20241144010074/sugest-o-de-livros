@@ -41,3 +41,13 @@ def editar_livro(id):
         return redirect(url_for("main.index"))
 
     return render_template("editar.html", livro=livro)
+
+
+@bp.route("/livros/<int:id>/excluir", methods=["POST"])
+def excluir_livro(id):
+    livro = db.get_or_404(Livro, id)
+
+    db.session.delete(livro)
+    db.session.commit()
+
+    return redirect(url_for("main.index"))
